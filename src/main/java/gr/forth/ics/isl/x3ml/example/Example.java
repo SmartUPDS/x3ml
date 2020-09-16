@@ -48,7 +48,7 @@ public class Example {
         final String ASSOCIATION_TABLE_PATH=""; ////if empty, the generator will not be used
         final int UUID_SIZE=0;
         final Pair<String,Lang> terminology=Pair.of("example/terms.nt", Lang.NT);   //if empty it will not be used
-        final outputFormat OUT_FORMAT=outputFormat.RDF_XML;
+        final outputFormat OUT_FORMAT=outputFormat.TRIG;
         final outputStream OUT_STREAM=outputStream.SYSTEM_OUT;
         X3MLEngine.REPORT_PROGRESS=false;
         

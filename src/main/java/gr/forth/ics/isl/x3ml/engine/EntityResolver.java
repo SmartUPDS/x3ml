@@ -148,7 +148,8 @@ public class EntityResolver {
                                     }else if(mappingNamedGraph.startsWith("http://") || mappingNamedGraph.startsWith("https://") || mappingNamedGraph.startsWith("uuid:") || mappingNamedGraph.startsWith("urn:")){
                                         namedGraph=mappingNamedGraph+generatedValue.text.replace("http://","_").replace("https://","_").replace("uuid:", "_").replace("urn:","_");
                                     }else{
-                                        namedGraph="http://"+mappingNamedGraph+generatedValue.text.replace("http://","_").replace("https://","_").replace("uuid:", "_").replace("urn:","_");
+//                                        namedGraph="http://"+mappingNamedGraph+generatedValue.text.replace("http://","_").replace("https://","_").replace("uuid:", "_").replace("urn:","_");
+                                        namedGraph=generatedValue.text+"/"+mappingNamedGraph;
                                     }
                                     X3ML.Mapping.namedGraphProduced=namedGraph;
                                 }
@@ -163,7 +164,8 @@ public class EntityResolver {
                                     }else if(domainNamedGraph.startsWith("http://") || domainNamedGraph.startsWith("https://") || domainNamedGraph.startsWith("uuid:") || domainNamedGraph.startsWith("urn:")){
                                         X3ML.DomainElement.namedGraphProduced=domainNamedGraph+generatedValue.text.replace("http://","_").replace("https://","_").replace("uuid:", "_").replace("urn:","_");
                                     }else{
-                                        X3ML.DomainElement.namedGraphProduced="http://"+domainNamedGraph+generatedValue.text.replace("http://","_").replace("https://","_").replace("uuid:", "_").replace("urn:","_");
+//                                        X3ML.DomainElement.namedGraphProduced="http://"+domainNamedGraph+generatedValue.text.replace("http://","_").replace("https://","_").replace("uuid:", "_").replace("urn:","_");
+                                        X3ML.DomainElement.namedGraphProduced=generatedValue.text+domainNamedGraph;
                                     }
                                 }
 

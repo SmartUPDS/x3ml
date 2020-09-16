@@ -50,6 +50,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.ByteBuffer;
 import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -317,15 +318,20 @@ public class X3MLGeneratorPolicy implements Generator {
                 String expandedUriPart1=uriTemplate.expand();
                 String expandedUriPart2="";
                 if(uriTemplate.expand().contains("/")){
-                    expandedUriPart1=expandedUriPart1.substring(0, expandedUriPart1.lastIndexOf("/")+1);
+                    expandedUriPart1=expandedUriPart1.substring(0,expandedUriPart1.lastIndexOf("/")+1);
                     expandedUriPart2=uriTemplate.expand().substring(uriTemplate.expand().lastIndexOf("/")+1);
                 }
                 if(expandedUriPart2.isEmpty()){
                     UUID uuid = java.util.UUID.nameUUIDFromBytes(expandedUriPart1.getBytes());
-                    return uriValue(namespaceUri + uuid.toString().toUpperCase());
+                    long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
+                    String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
+                    return uriValue(namespaceUri + shortenedSuffix.substring(0,8).toUpperCase());
                 }else{
+                    
                     UUID uuid = java.util.UUID.nameUUIDFromBytes(expandedUriPart2.getBytes());
-                    return uriValue(namespaceUri + expandedUriPart1 + uuid.toString().toUpperCase());
+                    long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
+                    String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
+                    return uriValue(namespaceUri + expandedUriPart1 + shortenedSuffix.substring(0,8).toUpperCase());
                 }
             }
             return uriValue(namespaceUri + uriTemplate.expand()

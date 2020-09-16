@@ -19,7 +19,12 @@ under the License.
 
 package gr.forth;
 
+import com.damnhandy.uri.template.UriTemplate;
 import gr.forth.ics.isl.x3ml.X3MLGeneratorPolicy;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.ByteBuffer;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -47,9 +52,18 @@ public class MultiHashingGenerator implements X3MLGeneratorPolicy.CustomGenerato
     @Override
     public void setArg(String name, String value) throws X3MLGeneratorPolicy.CustomGeneratorException {
         if(name.endsWith(Labels._HASHED_CONTENTS)){
-            evaluatedArguments.add(UUID.nameUUIDFromBytes(value.getBytes()).toString().toUpperCase());
+//            evaluatedArguments.add(UUID.nameUUIDFromBytes(value.getBytes()).toString().toUpperCase());
+            String encodedText=UriTemplate.fromTemplate("{foo}").set("foo", value).expand();
+            UUID uuid = java.util.UUID.nameUUIDFromBytes(encodedText.getBytes());
+            long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
+            String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
+            evaluatedArguments.add(shortenedSuffix.substring(0,8).toUpperCase());
         }else if(name.endsWith(Labels._RANDOM_UUID)){
-            evaluatedArguments.add(UUID.randomUUID().toString().toUpperCase());
+//            evaluatedArguments.add(UUID.randomUUID().toString().toUpperCase());
+            UUID uuid = java.util.UUID.randomUUID();
+            long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
+            String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
+            evaluatedArguments.add(shortenedSuffix.substring(0,8).toUpperCase());
         }else{
             evaluatedArguments.add(value);
         }
