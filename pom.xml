@@ -10,7 +10,7 @@
     <artifactId>x3ml-engine</artifactId>
     <packaging>jar</packaging>
     <name>X3ML-Engine_SmartUp</name>
-    <version>1.9.5-SNAPSHOT</version>
+    <version>1.9.5-smartup-SNAPSHOT</version>
     
     <inceptionYear>2013</inceptionYear>
     <organization>
