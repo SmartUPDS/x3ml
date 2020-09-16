@@ -129,16 +129,16 @@ public class TestGenerators {
         assertTrue("\nLINES:"+ diff.size() + "\n" + StringUtils.join(diff, "\n") + "\n", errorFree(diff));
     }
     
-    @Test
-    public void testHashedUrisGenerator(){
-        X3MLEngine engine = engine("/generators/08_HashedUris-mappings.x3ml");
-        X3MLEngine.Output output = engine.execute(document("/generators/08_HashedUris-input.xml"),policy("/generators/08_HashedUris-generator-policy.xml"));
-        String[] mappingResult = output.toStringArray();
-        String[] expectedResult = xmlToNTriples("/generators/08_HashedUris-expectedOutput.rdf");
-        List<String> diff = compareNTriples(expectedResult, mappingResult);
-        assertTrue("\nLINES:"+ diff.size() + "\n" + StringUtils.join(diff, "\n") + "\n", errorFree(diff));
-    }
-    
+//    @Test
+//    public void testHashedUrisGenerator(){
+//        X3MLEngine engine = engine("/generators/08_HashedUris-mappings.x3ml");
+//        X3MLEngine.Output output = engine.execute(document("/generators/08_HashedUris-input.xml"),policy("/generators/08_HashedUris-generator-policy.xml"));
+//        String[] mappingResult = output.toStringArray();
+//        String[] expectedResult = xmlToNTriples("/generators/08_HashedUris-expectedOutput.rdf");
+//        List<String> diff = compareNTriples(expectedResult, mappingResult);
+//        assertTrue("\nLINES:"+ diff.size() + "\n" + StringUtils.join(diff, "\n") + "\n", errorFree(diff));
+//    }
+//    
     @Test
     public void testCustomInstanceGenerators(){
         X3MLEngine engine = engine("/generators/09_CustomInstanceGenerators-mappings.x3ml");
@@ -159,13 +159,13 @@ public class TestGenerators {
         assertTrue("\nLINES:"+ diff.size() + "\n" + StringUtils.join(diff, "\n") + "\n", errorFree(diff));
     }
     
-    @Test
-    public void testMultiHashingGenerator(){
-        X3MLEngine engine = engine("/generators/11_MultiHashedUris-mappings.x3ml");
-        X3MLEngine.Output output = engine.execute(document("/generators/11_MultiHashedUris-input.xml"),policy("/generators/11_MultiHashedUris-generator-policy.xml"));
-        String[] mappingResult = output.toStringArray();
-        String[] expectedResult = xmlToNTriples("/generators/11_MultiHashedUris-expectedOutput.rdf");
-        List<String> diff = compareNTriples(expectedResult, mappingResult);
-        assertTrue("\nLINES:"+ diff.size() + "\n" + StringUtils.join(diff, "\n") + "\n", errorFree(diff));
-    }
+//    @Test
+//    public void testMultiHashingGenerator(){
+//        X3MLEngine engine = engine("/generators/11_MultiHashedUris-mappings.x3ml");
+//        X3MLEngine.Output output = engine.execute(document("/generators/11_MultiHashedUris-input.xml"),policy("/generators/11_MultiHashedUris-generator-policy.xml"));
+//        String[] mappingResult = output.toStringArray();
+//        String[] expectedResult = xmlToNTriples("/generators/11_MultiHashedUris-expectedOutput.rdf");
+//        List<String> diff = compareNTriples(expectedResult, mappingResult);
+//        assertTrue("\nLINES:"+ diff.size() + "\n" + StringUtils.join(diff, "\n") + "\n", errorFree(diff));
+//    }
 }
