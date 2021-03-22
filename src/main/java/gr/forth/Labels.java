@@ -34,6 +34,8 @@ public class Labels {
     public static final String DIFF_TERMS_DELIMITER="diffTermsDelim";
     public static final String EN_LANGUAGE="en";
     public static final String EXACT_MATCH="exactMatch";
+    public static final String EXCLAMATION_CHARACTER="!";
+    public static final String EXCLAMATION_CHARACTER_ENCODED="%21";
     public static final String HTTP="http";
     public static final String INSTANCE="instance";
     public static final String LABEL="label";
