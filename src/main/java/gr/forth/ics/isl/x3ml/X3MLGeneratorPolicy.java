@@ -323,15 +323,10 @@ public class X3MLGeneratorPolicy implements Generator {
                 }
                 if(expandedUriPart2.isEmpty()){
                     UUID uuid = java.util.UUID.nameUUIDFromBytes(expandedUriPart1.getBytes());
-                    long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
-                    String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
-                    return uriValue(namespaceUri + shortenedSuffix.substring(0,8).toUpperCase());
+                    return uriValue(namespaceUri + uuid.toString().toUpperCase());
                 }else{
-                    
                     UUID uuid = java.util.UUID.nameUUIDFromBytes(expandedUriPart2.getBytes());
-                    long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
-                    String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
-                    return uriValue(namespaceUri + expandedUriPart1 + shortenedSuffix.substring(0,8).toUpperCase());
+                    return uriValue(namespaceUri + expandedUriPart1 + uuid.toString().toUpperCase());
                 }
             }
             return uriValue(namespaceUri + uriTemplate.expand()
