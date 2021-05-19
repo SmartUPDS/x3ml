@@ -55,15 +55,15 @@ public class MultiHashingGenerator implements X3MLGeneratorPolicy.CustomGenerato
 //            evaluatedArguments.add(UUID.nameUUIDFromBytes(value.getBytes()).toString().toUpperCase());
             String encodedText=UriTemplate.fromTemplate("{foo}").set("foo", value).expand();
             UUID uuid = java.util.UUID.nameUUIDFromBytes(encodedText.getBytes());
-            long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
-            String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
-            evaluatedArguments.add(shortenedSuffix.substring(0,8).toUpperCase());
+            // long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
+            // String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
+            evaluatedArguments.add(uuid.toString().toUpperCase());
         }else if(name.endsWith(Labels._RANDOM_UUID)){
 //            evaluatedArguments.add(UUID.randomUUID().toString().toUpperCase());
             UUID uuid = java.util.UUID.randomUUID();
-            long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
-            String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
-            evaluatedArguments.add(shortenedSuffix.substring(0,8).toUpperCase());
+            // long l = ByteBuffer.wrap(uuid.toString().getBytes()).getLong();
+            // String shortenedSuffix=Long.toString(l, Character.MAX_RADIX);
+            evaluatedArguments.add(uuid.toString().toUpperCase());
         }else{
             evaluatedArguments.add(value);
         }

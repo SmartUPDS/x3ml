@@ -119,4 +119,5 @@ public class Labels {
     public static final String OUTPUT_EXTENSION_TRIG="trig";
     public static final String OUTPUT_EXTENSION_TURTLE="ttl";
     public static final String OUTPUT_EXTENSION_XML="xml";
+    public static final String OUTPUT_EXTENSION_N3="n3";
 }
